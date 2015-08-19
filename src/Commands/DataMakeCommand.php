@@ -4,6 +4,7 @@ namespace Kodebyraaet\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\AppNamespaceDetectorTrait;
+use Kodebyraaet\Generators\Actions\Migration;
 
 class DataMakeCommand extends Command
 {
@@ -14,7 +15,7 @@ class DataMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:data {name}';
+    protected $signature = 'make:data {name} {--seed} {--migration}';
 
     /**
      * The console command description.
@@ -42,14 +43,29 @@ class DataMakeCommand extends Command
     {
         $name = $this->argument('name');
 
+        if($this->option('migration'))
+            Migration::create($name, $this);
+
+        if($this->option('seed'))
+            $this->call('make:data:seeder', ['name' => $name]);
+
         $this->call('make:data:model', ['name' => $name]);
         $this->call('make:data:repository', ['name' => $name]);
         $this->call('make:data:interface', ['name' => $name]);
         $this->call('make:data:provider', ['name' => $name]);
 
-        $this->info("===================================================");
+
+
+        $this->comment("===================================================");
         $this->info("Add the following line to your providers in config:");
 
-        $this->info($this->getAppNamespace().'Data\\'.$name.'\\'.$name.'ServiceProvider::class,');
+
+        $this->line($this->getAppNamespace().'Data\\'.$name.'\\'.$name.'ServiceProvider::class,');
+
+        if($this->option('seed')) {
+            $this->comment("===================================================");
+            $this->info('Add the following line to your DatabaseSeeder.php:');
+            $this->line('$this->call('.$name.'TableSeeder::class);');
+        }
     }
 }

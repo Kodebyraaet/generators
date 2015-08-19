@@ -23,23 +23,27 @@ class GeneratorsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('command.kodebyraaet.repository', function ($app) {
-            return $app[\Kodebyraaet\Generators\Commands\RepositoryMakeCommand::class];
+            return $app[Commands\RepositoryMakeCommand::class];
         });
 
         $this->app->singleton('command.kodebyraaet.interface', function ($app) {
-            return $app[\Kodebyraaet\Generators\Commands\InterfaceMakeCommand::class];
+            return $app[Commands\InterfaceMakeCommand::class];
         });
 
         $this->app->singleton('command.kodebyraaet.model', function ($app) {
-            return $app[\Kodebyraaet\Generators\Commands\ModelMakeCommand::class];
+            return $app[Commands\ModelMakeCommand::class];
         });
 
         $this->app->singleton('command.kodebyraaet.provider', function ($app) {
-            return $app[\Kodebyraaet\Generators\Commands\ProviderMakeCommand::class];
+            return $app[Commands\ProviderMakeCommand::class];
         });
 
         $this->app->singleton('command.kodebyraaet.data', function ($app) {
-            return $app[\Kodebyraaet\Generators\Commands\DataMakeCommand::class];
+            return $app[Commands\DataMakeCommand::class];
+        });
+
+        $this->app->singleton('command.kodebyraaet.seeder', function ($app) {
+            return $app[Commands\SeederMakeCommand::class];
         });
 
         $this->commands('command.kodebyraaet.repository');
@@ -47,5 +51,6 @@ class GeneratorsServiceProvider extends ServiceProvider
         $this->commands('command.kodebyraaet.model');
         $this->commands('command.kodebyraaet.provider');
         $this->commands('command.kodebyraaet.data');
+        $this->commands('command.kodebyraaet.seeder');
     }
 }

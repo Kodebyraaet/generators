@@ -1,0 +1,25 @@
+<?php
+
+use App\Data\{model}\Contracts\{model}Interface;
+use Illuminate\Database\Seeder;
+
+class {model}TableSeeder extends Seeder
+{
+
+    public function __construct()
+    {
+        $this->model = \App::make({model}Interface::class);
+    }
+
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->model->create([
+
+        ]);
+    }
+}
