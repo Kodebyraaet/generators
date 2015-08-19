@@ -1,0 +1,23 @@
+<?php namespace {class_namespace};
+
+use App\Data\Repository;
+
+use {app_namespace}\Data\{model}\Models\{model};
+use {app_namespace}\Data\{model}\Contracts\{model}Interface;
+
+class {model}Repository extends Repository implements {model}Interface
+{
+
+    /**
+     * Constructor
+     * 
+     * @param {model}   $model
+     */
+    function __construct({model} $model)
+    {
+        $this->model = $model;
+
+        parent::__construct();
+    }
+
+}

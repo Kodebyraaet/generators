@@ -1,0 +1,22 @@
+<?php namespace {class_namespace};
+
+use Illuminate\Support\ServiceProvider;
+
+use {app_namespace}\Data\{model}\Models\{model};
+use {app_namespace}\Data\{model}\Contracts\{model}Interface;
+use {app_namespace}\Data\{model}\Repositories\{model}Repository;
+
+class {model}ServiceProvider extends ServiceProvider 
+{
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind({model}Interface::class, function() {
+            return new {model}Repository(new {model});
+        });
+    }
+}

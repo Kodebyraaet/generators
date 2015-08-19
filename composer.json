@@ -1,0 +1,27 @@
+{
+    "name": "kodebyraaet/generators",
+    "description": "A collection of generators",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fredrik Eriksen",
+            "email": "fredrik@kodebyraaet.no"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/console": "^5.1",
+        "illuminate/filesystem": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.6",
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kodebyraaet\\Generators\\": "src"
+        }
+    },
+    "autoload-dev": {},
+    "minimum-stability": "stable"
+}
