@@ -3,9 +3,12 @@
 namespace Kodebyraaet\Generators\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Console\AppNamespaceDetectorTrait;
 
 class DataMakeCommand extends Command
 {
+    use AppNamespaceDetectorTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -43,5 +46,10 @@ class DataMakeCommand extends Command
         $this->call('make:data:repository', ['name' => $name]);
         $this->call('make:data:interface', ['name' => $name]);
         $this->call('make:data:provider', ['name' => $name]);
+
+        $this->info("===================================================");
+        $this->info("Add the following line to your providers in config:");
+
+        $this->info($this->getAppNamespace().'Data\\'.$name.'\\'.$name.'ServiceProvider::class,');
     }
 }

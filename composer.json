@@ -22,6 +22,5 @@
             "Kodebyraaet\\Generators\\": "src"
         }
     },
-    "autoload-dev": {},
-    "minimum-stability": "stable"
+    "autoload-dev": {}
 }
