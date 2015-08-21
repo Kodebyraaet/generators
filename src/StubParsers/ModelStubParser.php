@@ -1,6 +1,4 @@
-<?php
-
-namespace Kodebyraaet\Generators\StubParsers;
+<?php namespace Kodebyraaet\Generators\StubParsers;
 
 class ModelStubParser extends StubParser
 {

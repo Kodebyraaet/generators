@@ -1,23 +1,7 @@
-<?php
+<?php namespace Kodebyraaet\Generators\Generators;
 
-namespace Kodebyraaet\Generators\Commands;
-
-class ProviderMakeCommand extends GeneratorCommand
+class RepositoryInterface extends BaseGenerator
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'make:data:provider {name}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new data service provider.';
-
     /**
      * Directory path.
      *
@@ -25,7 +9,7 @@ class ProviderMakeCommand extends GeneratorCommand
      */
     public function directory()
     {
-        return app_path('Data/'.$this->name);
+        return app_path('Data/'.$this->name.'/Contracts');
     }
 
     /**
@@ -33,9 +17,13 @@ class ProviderMakeCommand extends GeneratorCommand
      * 
      * @return string
      */
-    public function filename() 
+    public function filename($name = null) 
     {
-        return $this->directory() . "/{$this->name}ServiceProvider.php";
+        if ($name === null) {
+            $name = $this->name;
+        }
+
+        return $this->directory() . '/'. $name . 'Interface.php';
     }
 
     /**
@@ -50,6 +38,10 @@ class ProviderMakeCommand extends GeneratorCommand
 
         if (!$this->filesystem->isDirectory(app_path('Data/'.$this->name))) {
             $this->filesystem->makeDirectory(app_path('Data/'.$this->name));
+        }
+
+        if (!$this->filesystem->isDirectory($this->directory())) {
+            $this->filesystem->makeDirectory($this->directory());
         }
     }
 }

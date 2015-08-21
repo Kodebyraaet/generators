@@ -10,6 +10,6 @@ class {model} extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = [];
 
 }

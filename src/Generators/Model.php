@@ -1,23 +1,7 @@
-<?php
+<?php namespace Kodebyraaet\Generators\Generators;
 
-namespace Kodebyraaet\Generators\Commands;
-
-class ModelMakeCommand extends GeneratorCommand
+class Model extends BaseGenerator
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'make:data:model {name}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new data model.';
-
     /**
      * Directory path.
      *
@@ -33,9 +17,13 @@ class ModelMakeCommand extends GeneratorCommand
      * 
      * @return string
      */
-    public function filename() 
+    public function filename($name = null) 
     {
-        return $this->directory() . "/{$this->name}.php";
+        if ($name === null) {
+            $name = $this->name;
+        }
+
+        return $this->directory() . '/'. $name .'.php';
     }
 
     /**
@@ -54,6 +42,19 @@ class ModelMakeCommand extends GeneratorCommand
 
         if (!$this->filesystem->isDirectory($this->directory())) {
             $this->filesystem->makeDirectory($this->directory());
+        }
+    }
+
+    /**
+     * After the original file is generated, generate any extra models if any
+     *
+     */
+    public function afterGenerate()
+    {
+        if (isset($this->data['extraModels'])) {
+            foreach ($this->data['extraModels'] as $model) {
+                $this->createFile($model);
+            }
         }
     }
 }

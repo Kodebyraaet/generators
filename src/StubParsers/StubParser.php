@@ -1,12 +1,16 @@
-<?php
-
-namespace Kodebyraaet\Generators\StubParsers;
+<?php namespace Kodebyraaet\Generators\StubParsers;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
 abstract class StubParser
 {
     use AppNamespaceDetectorTrait;
+
+    /**
+     * Contains extra data sent from the command
+     * @var array
+     */
+    protected $data;
 
     /**
      * Load the stub to be used
@@ -42,6 +46,18 @@ abstract class StubParser
     public function setClassNamespace($namespace)
     {
         $this->namespace = $namespace;
+
+        return $this;
+    }
+
+    /**
+     * Set extra data
+     * 
+     * @param array $data
+     */
+    public function setData(array $data)
+    {
+        $this->data = $data;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 
 use App\Data\Repository;
 
-use {app_namespace}\Data\{model}\Models\{model};
+use {app_namespace}\Data\{model}\Models\{model};{extra_models_use_statements}
 use {app_namespace}\Data\{model}\Contracts\{model}Interface;
 
 class {model}Repository extends Repository implements {model}Interface
@@ -11,11 +11,11 @@ class {model}Repository extends Repository implements {model}Interface
     /**
      * Constructor
      * 
-     * @param {model}   $model
+     * @param {model} $model{extra_models_doc_block}
      */
-    function __construct({model} $model)
+    function __construct({model} $model{extra_models_construct})
     {
-        $this->model = $model;
+        $this->model = $model;{extra_models_set_variables}
 
         parent::__construct();
     }

@@ -1,12 +1,10 @@
-<?php
-
-namespace Kodebyraaet\Generators\Commands;
+<?php namespace Kodebyraaet\Generators\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
-abstract class GeneratorCommand extends Command
+abstract class BaseGenerator
 {
     use AppNamespaceDetectorTrait;
 
@@ -24,16 +22,43 @@ abstract class GeneratorCommand extends Command
     protected $name;
 
     /**
-     * Create a new command instance.
+     * The console instance passed from the ran command
+     * @var Console
+     */
+    protected $console;
+
+    /**
+     * Constructor
      *
-     * @return RepositoryMakeCommand
      */
     public function __construct(Filesystem $filesystem)
     {
-        parent::__construct();
-
         $this->filesystem = $filesystem;
         $this->parser     = $this->parser();
+    }
+
+    /**
+     * Will set the Console instance
+     * 
+     * @param  Console $console
+     */
+    public function setConsole($console)
+    {
+        $this->console = $console;
+
+        return $this;
+    }
+
+    /**
+     * Will set any additional data that will be sent to the parser
+     * 
+     * @param array $data
+     */
+    public function setData(array $data)
+    {
+        $this->data = $data;
+
+        return $this;
     }
 
     /**
@@ -43,16 +68,25 @@ abstract class GeneratorCommand extends Command
     abstract public function directory();
 
     /**
+     * File name.
+     * 
+     */
+    abstract public function filename($name = null);
+
+    /**
      * Will generate the folders needed to make files
      * 
      */
     abstract public function makeFolders();
 
     /**
-     * The filename of the file that will be created
+     * A function that will be ran after generating the original file
      * 
      */
-    abstract public function filename();
+    public function afterGenerate() 
+    {
+
+    }
 
     /**
      * The parser to use.
@@ -61,10 +95,8 @@ abstract class GeneratorCommand extends Command
      */
     protected function parser()
     {
-        $class  = class_basename(get_called_class());
-
-        $parser = str_replace('MakeCommand', 'StubParser', $class);
-        $parser = "Kodebyraaet\\Generators\\StubParsers\\{$parser}";
+        $parser = class_basename(get_called_class()).'StubParser';
+        $parser = 'Kodebyraaet\\Generators\\StubParsers\\'.$parser;
 
         return app($parser);
     }
@@ -72,14 +104,14 @@ abstract class GeneratorCommand extends Command
     /**
      * Get the stub file for the generator.
      *
+     * @return string
      */
     protected function stub()
     {
-        $class  = class_basename(get_called_class());
-        $slug = snake_case(str_replace('MakeCommand', '', $class));
+        $slug = snake_case(class_basename(get_called_class()));
         $slug = str_replace('_', '-', $slug);
 
-        return __DIR__ . "/stubs/{$slug}.stub";
+        return __DIR__ . "/../Stubs/{$slug}.stub";
     }
 
     /**
@@ -99,24 +131,23 @@ abstract class GeneratorCommand extends Command
         return $class;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    protected function createFile($name = null)
     {
-        $this->name = $this->argument('name');
-        $file = $this->filename();
+        if ($name === null) {
+            $name = $this->name;
+        }
+
+        $file = $this->filename($name);
 
         $content = $this->parser
             ->stub($this->stub())
-            ->name($this->name)
+            ->name($name)
             ->setClassNamespace($this->detectNamespace())
+            ->setData($this->data)
             ->parse();
 
         if ($this->filesystem->exists($file)) {
-            $this->error("The file {$file} already exists.");
+            $this->console->error("The file {$file} already exists.");
             return;
         }
 
@@ -125,6 +156,20 @@ abstract class GeneratorCommand extends Command
 
         // Create the file
         $this->filesystem->put($file, $content);
-        $this->info("Generated {$file}");
+        $this->console->info("Generated {$file}");
+    }
+
+    /**
+     * Generate the file
+     *
+     * @return mixed
+     */
+    public function generate($name)
+    {
+        $this->name = $name;
+        
+        $this->createFile($this->name);
+
+        $this->afterGenerate();
     }
 }

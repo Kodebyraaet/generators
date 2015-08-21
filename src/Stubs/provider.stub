@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-use {app_namespace}\Data\{model}\Models\{model};
+use {app_namespace}\Data\{model}\Models\{model};{extra_models_use_statements}
 use {app_namespace}\Data\{model}\Contracts\{model}Interface;
 use {app_namespace}\Data\{model}\Repositories\{model}Repository;
 
@@ -16,7 +16,9 @@ class {model}ServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind({model}Interface::class, function() {
-            return new {model}Repository(new {model});
+            return new {model}Repository(
+                new {model}{extra_models}
+            );
         });
     }
 }

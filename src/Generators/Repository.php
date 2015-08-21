@@ -1,23 +1,7 @@
-<?php
+<?php namespace Kodebyraaet\Generators\Generators;
 
-namespace Kodebyraaet\Generators\Commands;
-
-class RepositoryMakeCommand extends GeneratorCommand
+class Repository extends BaseGenerator
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'make:data:repository {name}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new data repository.';
-
     /**
      * The directory path
      * 
@@ -33,9 +17,13 @@ class RepositoryMakeCommand extends GeneratorCommand
      * 
      * @return string
      */
-    public function filename() 
+    public function filename($name = null) 
     {
-        return $this->directory() . "/{$this->name}Repository.php";
+        if ($name === null) {
+            $name = $this->name;
+        }
+
+        return $this->directory() . '/'. $name . 'Repository.php';
     }
 
     /**

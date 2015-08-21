@@ -17,17 +17,12 @@ Add the provider in `config/app.php`.
 
 | Command  | Description |
 | ------------- | ------------- |
-| php artisan make:data Name [--seed] [--migration] | Create the a data folder with a model, repository, interface and service provider |
-| php artisan make:data:model Name | Create a new data model |
-| php artisan make:data:repository Name | Create a new data repository |
-| php artisan make:data:interface Name | Create a new data interface |
-| php artisan make:data:provider Name | Create a new data service provider |
-| php artisan make:data:seeder Name | Create a new data seeder |
+| php artisan make:data Name [--models=<Additional models>] [--seed] [--migration] | Create the a data folder with a model, repository, interface and service provider |
 
     
 ## Example Usage
 
-    php artisan make:data Project --seed --migration
+    php artisan make:data Project --model=Person,Job --seed --migration
     
   This will create the following files and folders:
   ``` 
@@ -38,6 +33,8 @@ Add the provider in `config/app.php`.
   |            +-- ProjectInterface.php
   |         +-- Models
   |            +-- Project.php
+  |            +-- Person.php
+  |            +-- Job.php
   |         +-- Repositories
   |            +-- ProjectRepository.php
   |         +-- ProjectServiceProvider.php
