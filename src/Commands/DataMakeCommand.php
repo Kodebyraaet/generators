@@ -49,14 +49,6 @@ class DataMakeCommand extends Command
         $name = str_singular(studly_case($this->argument('name')));
         $extraData = [];
 
-        // If the migration option is set, create a migration
-        if ($this->option('migration')) {
-            $this->call('make:migration', [
-                'name' => 'Create_'.str_plural(strtolower($name)).'_table',
-                '--create' => str_plural(strtolower($name))
-            ]);
-        }
-
         // If the models option is set, make it an array of models
         if ($this->option('models')) {
             if (strpos($this->option('models'), ',') !== false) {
@@ -71,6 +63,24 @@ class DataMakeCommand extends Command
                     unset($extraData['extraModels'][$key]);
                 }
             }       
+        }
+
+        // If the migration option is set, create a migration
+        if ($this->option('migration')) {
+            $this->call('make:migration', [
+                'name' => 'Create_'.str_plural(strtolower($name)).'_table',
+                '--create' => str_plural(strtolower($name))
+            ]);
+
+            // If any extra models are being created, make migrations for them aswell
+            if (isset($extraData['extraModels']) && count($extraData['extraModels'])) {
+                foreach ($extraData['extraModels'] as $entry) {
+                    $this->call('make:migration', [
+                        'name' => 'Create_'.str_plural(strtolower($entry)).'_table',
+                        '--create' => str_plural(strtolower($entry))
+                    ]);
+                }
+            }
         }
 
         // If the seed option is set, create a seed
