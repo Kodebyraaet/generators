@@ -1,0 +1,8 @@
+<?php namespace {class_namespace};
+
+use Kodebyraaet\Pattern\BaseRepositoryInterface;
+
+interface RepositoryInterface extends BaseRepositoryInterface
+{
+
+}

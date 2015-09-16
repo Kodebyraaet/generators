@@ -25,6 +25,11 @@ class GeneratorsServiceProvider extends ServiceProvider
             return $app[Commands\DataMakeCommand::class];
         });
 
+        $this->app->singleton('command.kodebyraaet.repository', function ($app) {
+            return $app[Commands\BaseRepositoryMakeCommand::class];
+        });
+
         $this->commands('command.kodebyraaet.data');
+        $this->commands('command.kodebyraaet.repository');
     }
 }

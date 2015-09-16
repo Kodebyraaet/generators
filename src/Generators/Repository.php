@@ -14,7 +14,8 @@ class Repository extends BaseGenerator
 
     /**
      * The filename
-     * 
+     *
+     * @param string $name
      * @return string
      */
     public function filename($name = null) 

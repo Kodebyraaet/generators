@@ -3,6 +3,7 @@
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\AppNamespaceDetectorTrait;
+use Kodebyraaet\Generators\StubParsers\StubParser;
 
 abstract class BaseGenerator
 {
@@ -23,9 +24,15 @@ abstract class BaseGenerator
 
     /**
      * The console instance passed from the ran command
-     * @var Console
+     * @var Command
      */
     protected $console;
+
+    /**
+     * An array of any additional data that should be sent to the parser
+     * @var Array
+     */
+    protected $data;
 
     /**
      * Constructor
@@ -39,10 +46,11 @@ abstract class BaseGenerator
 
     /**
      * Will set the Console instance
-     * 
-     * @param  Console $console
+     *
+     * @param  Command $console
+     * @return $this
      */
-    public function setConsole($console)
+    public function setConsole(Command $console)
     {
         $this->console = $console;
 
@@ -51,8 +59,9 @@ abstract class BaseGenerator
 
     /**
      * Will set any additional data that will be sent to the parser
-     * 
+     *
      * @param array $data
+     * @return $this
      */
     public function setData(array $data)
     {
@@ -69,7 +78,8 @@ abstract class BaseGenerator
 
     /**
      * File name.
-     * 
+     *
+     * @param string $name
      */
     abstract public function filename($name = null);
 
@@ -131,6 +141,11 @@ abstract class BaseGenerator
         return $class;
     }
 
+    /**
+     * Will run the parser, create necessary folders and files
+     *
+     * @param string $name
+     */
     protected function createFile($name = null)
     {
         if ($name === null) {
@@ -151,7 +166,7 @@ abstract class BaseGenerator
             return;
         }
 
-        // Make folders if neccecary
+        // Make folders if necessary
         $this->makeFolders();
 
         // Create the file
@@ -162,7 +177,7 @@ abstract class BaseGenerator
     /**
      * Generate the file
      *
-     * @return mixed
+     * @param string $name
      */
     public function generate($name)
     {

@@ -13,10 +13,29 @@ abstract class StubParser
     protected $data;
 
     /**
+     * The stub file that will be used
+     * @var string
+     */
+    protected $stub;
+
+    /**
+     * The name of the object we are creating
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * The namespace for the file we are creating
+     * @var string
+     */
+    protected $namespace;
+
+
+    /**
      * Load the stub to be used
      *
      * @param  string  $stub
-     * @return RepositoryStubParser
+     * @return $this
      */
     public function stub($stub)
     {
@@ -28,7 +47,7 @@ abstract class StubParser
     /**
      * Load the name to be made.
      *
-     * @return RepositoryStubParser
+     * @return $this
      */
     public function name($name)
     {
@@ -41,7 +60,7 @@ abstract class StubParser
      * Set the namespace
      *
      * @param  string  $namespace
-     * @return StubParser
+     * @return $this
      */
     public function setClassNamespace($namespace)
     {
@@ -52,8 +71,9 @@ abstract class StubParser
 
     /**
      * Set extra data
-     * 
+     *
      * @param array $data
+     * @return $this
      */
     public function setData(array $data)
     {
@@ -105,7 +125,7 @@ abstract class StubParser
 
 /*
 |--------------------------------------------------------------------------
-| Default Stub Parser Functons
+| Default Stub Parser Functions
 |--------------------------------------------------------------------------
 |
 | Here are the default stub parsers.

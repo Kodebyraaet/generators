@@ -1,0 +1,8 @@
+<?php namespace {class_namespace};
+
+use Kodebyraaet\Pattern\BaseRepository;
+
+class Repository extends BaseRepository
+{
+
+}

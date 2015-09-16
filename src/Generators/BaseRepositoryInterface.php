@@ -1,15 +1,15 @@
 <?php namespace Kodebyraaet\Generators\Generators;
 
-class Seeder extends BaseGenerator
+class BaseRepositoryInterface extends BaseGenerator
 {
     /**
-     * Directory path.
-     *
+     * The directory path
+     * 
      * @return string
      */
     public function directory()
     {
-        return base_path('database/seeds');
+        return app_path('Data');
     }
 
     /**
@@ -18,13 +18,9 @@ class Seeder extends BaseGenerator
      * @param string $name
      * @return string
      */
-    public function filename($name = null) 
+    public function filename($name = null)
     {
-        if ($name === null) {
-            $name = $this->name;
-        }
-
-        return $this->directory() . '/' . $name .'TableSeeder.php';
+        return $this->directory() . '/RepositoryInterface.php';
     }
 
     /**
@@ -33,6 +29,8 @@ class Seeder extends BaseGenerator
      */
     public function makeFolders()
     {
-
+        if (!$this->filesystem->isDirectory(app_path('Data'))) {
+            $this->filesystem->makeDirectory(app_path('Data'));
+        }
     }
 }

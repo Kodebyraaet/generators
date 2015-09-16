@@ -23,14 +23,14 @@ class DataMakeCommand extends Command
     protected $description = 'Create the a data folder with a model, repository, interface and service provider';
 
     /**
-     * @var Generator
+     * @var GeneratorFactory
      */
     private $generator;
 
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param GeneratorFactory $generator
      */
     public function __construct(GeneratorFactory $generator)
     {
@@ -85,19 +85,19 @@ class DataMakeCommand extends Command
 
         // If the seed option is set, create a seed
         if ($this->option('seed'))
-            $this->generator->create('Seeder', $name, $this);
+            $this->generator->create('Seeder', $this, $name);
 
         // Create the model
-        $this->generator->create('Model', $name, $this, $extraData);
+        $this->generator->create('Model', $this, $name, $extraData);
 
         // Create the repository
-        $this->generator->create('Repository', $name, $this, $extraData);
+        $this->generator->create('Repository', $this, $name, $extraData);
 
         // Create the repository interface
-        $this->generator->create('RepositoryInterface', $name, $this);
+        $this->generator->create('RepositoryInterface', $this, $name);
 
         // Create the service provider
-        $this->generator->create('Provider', $name, $this, $extraData);
+        $this->generator->create('Provider', $this, $name, $extraData);
 
 
         $this->comment("===================================================");
