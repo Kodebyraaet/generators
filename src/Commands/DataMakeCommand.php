@@ -99,11 +99,7 @@ class DataMakeCommand extends Command
         // Create the service provider
         $this->generator->create('Provider', $this, $name, $extraData);
 
-
-        $this->comment("===================================================");
-        $this->info("Add the following line to your providers in config:");
-        $this->line($this->getAppNamespace().'Data\\'.$name.'\\'.$name.'ServiceProvider::class,');
-
+        // Post info about seed to console
         if ($this->option('seed')) {
             $this->comment("===================================================");
             $this->info('Add the following line to your DatabaseSeeder.php:');
