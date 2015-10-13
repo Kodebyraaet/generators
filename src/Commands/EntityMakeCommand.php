@@ -4,7 +4,7 @@ use Illuminate\Console\Command;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Kodebyraaet\Generators\GeneratorFactory;
 
-class DataMakeCommand extends Command
+class EntityMakeCommand extends Command
 {
     use AppNamespaceDetectorTrait;
 
@@ -13,14 +13,14 @@ class DataMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:data {name} {--seed} {--migration} {--models=}';
+    protected $signature = 'make:entity {name} {--seed} {--migration} {--models=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create the a data folder with a model, repository, interface and service provider';
+    protected $description = 'Create the an entity folder with a model, repository, interface and service provider';
 
     /**
      * @var GeneratorFactory

@@ -1,6 +1,6 @@
 <?php namespace {class_namespace};
 
-use {app_namespace}\Data\RepositoryInterface;
+use {app_namespace}\Entities\RepositoryInterface;
 
 interface {model}Interface extends RepositoryInterface 
 {

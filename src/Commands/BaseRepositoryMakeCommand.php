@@ -20,7 +20,7 @@ class BaseRepositoryMakeCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create the base repository that is needed by the objects created by make:data command';
+    protected $description = 'Create the base repository that is needed by the objects created by make:entity command';
 
     /**
      * @var GeneratorFactory

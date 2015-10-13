@@ -22,7 +22,7 @@ class GeneratorsServiceProvider extends ServiceProvider
     {
 
         $this->app->singleton('command.kodebyraaet.data', function ($app) {
-            return $app[Commands\DataMakeCommand::class];
+            return $app[Commands\EntityMakeCommand::class];
         });
 
         $this->app->singleton('command.kodebyraaet.repository', function ($app) {

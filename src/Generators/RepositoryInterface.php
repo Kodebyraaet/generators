@@ -9,7 +9,7 @@ class RepositoryInterface extends BaseGenerator
      */
     public function directory()
     {
-        return app_path('Data/'.$this->name.'/Contracts');
+        return app_path('Entities/'.$this->name.'/Contracts');
     }
 
     /**
@@ -33,12 +33,12 @@ class RepositoryInterface extends BaseGenerator
      */
     public function makeFolders()
     {
-        if (!$this->filesystem->isDirectory(app_path('Data'))) {
-            $this->filesystem->makeDirectory(app_path('Data'));
+        if (!$this->filesystem->isDirectory(app_path('Entities'))) {
+            $this->filesystem->makeDirectory(app_path('Entities'));
         }
 
-        if (!$this->filesystem->isDirectory(app_path('Data/'.$this->name))) {
-            $this->filesystem->makeDirectory(app_path('Data/'.$this->name));
+        if (!$this->filesystem->isDirectory(app_path('Entities/'.$this->name))) {
+            $this->filesystem->makeDirectory(app_path('Entities/'.$this->name));
         }
 
         if (!$this->filesystem->isDirectory($this->directory())) {

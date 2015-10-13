@@ -2,9 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 
-use {app_namespace}\Data\{model}\Models\{model};{extra_models_use_statements}
-use {app_namespace}\Data\{model}\Contracts\{model}Interface;
-use {app_namespace}\Data\{model}\Repositories\{model}Repository;
+use {app_namespace}\Entities\{model}\Models\{model};{extra_models_use_statements}
+use {app_namespace}\Entities\{model}\Contracts\{model}Interface;
+use {app_namespace}\Entities\{model}\Repositories\{model}Repository;
 
 class {model}ServiceProvider extends ServiceProvider 
 {

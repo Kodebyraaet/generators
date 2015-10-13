@@ -9,7 +9,7 @@ class BaseRepository extends BaseGenerator
      */
     public function directory()
     {
-        return app_path('Data');
+        return app_path('Entities');
     }
 
     /**
@@ -29,8 +29,8 @@ class BaseRepository extends BaseGenerator
      */
     public function makeFolders()
     {
-        if (!$this->filesystem->isDirectory(app_path('Data'))) {
-            $this->filesystem->makeDirectory(app_path('Data'));
+        if (!$this->filesystem->isDirectory(app_path('Entities'))) {
+            $this->filesystem->makeDirectory(app_path('Entities'));
         }
     }
 }

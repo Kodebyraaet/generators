@@ -31,7 +31,7 @@ class RepositoryStubParser extends StubParser
 
         if (isset($this->data['extraModels'])) {
             foreach ($this->data['extraModels'] as $model) {
-                $string .= PHP_EOL.'use '.$this->appNamespace().'\\Data\\'.$this->model().'\\Models\\'. $model .';';
+                $string .= PHP_EOL.'use '.$this->appNamespace().'\\Entities\\'.$this->model().'\\Models\\'. $model .';';
             }
         }
         return $string;
