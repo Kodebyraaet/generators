@@ -1,6 +1,6 @@
 <?php namespace {class_namespace};
 
-use App\Data\Repository;
+use {app_namespace}\Data\Repository;
 
 use {app_namespace}\Data\{model}\Models\{model};{extra_models_use_statements}
 use {app_namespace}\Data\{model}\Contracts\{model}Interface;

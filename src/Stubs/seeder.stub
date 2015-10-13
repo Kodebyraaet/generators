@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\{model}\Contracts\{model}Interface;
+use {app_namespace}\Data\{model}\Contracts\{model}Interface;
 use Illuminate\Database\Seeder;
 
 class {model}TableSeeder extends Seeder
