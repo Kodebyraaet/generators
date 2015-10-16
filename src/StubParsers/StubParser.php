@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators\StubParsers;
+<?php
+
+namespace Kodebyraaet\Generators\StubParsers;
 
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
@@ -123,14 +125,11 @@ abstract class StubParser
         return $functions;
     }
 
-/*
-|--------------------------------------------------------------------------
-| Default Stub Parser Functions
-|--------------------------------------------------------------------------
-|
-| Here are the default stub parsers.
-|
-*/
+    /*
+    |----------------------------------------------------------------------
+    | Default Stub Parser Functions
+    |----------------------------------------------------------------------
+    */
     /**
      * Get the application namespace and trim the slashes.
      *

@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators\Generators;
+<?php
+
+namespace Kodebyraaet\Generators\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -93,10 +95,7 @@ abstract class BaseGenerator
      * A function that will be ran after generating the original file
      * 
      */
-    public function afterGenerate() 
-    {
-
-    }
+    public function afterGenerate() {}
 
     /**
      * The parser to use.
@@ -182,9 +181,7 @@ abstract class BaseGenerator
     public function generate($name)
     {
         $this->name = $name;
-        
         $this->createFile($this->name);
-
         $this->afterGenerate();
     }
 }

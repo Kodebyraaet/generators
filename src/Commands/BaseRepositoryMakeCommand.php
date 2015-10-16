@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators\Commands;
+<?php
+
+namespace Kodebyraaet\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\AppNamespaceDetectorTrait;

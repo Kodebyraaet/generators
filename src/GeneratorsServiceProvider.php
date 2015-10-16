@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators;
+<?php
+
+namespace Kodebyraaet\Generators;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -11,6 +13,7 @@ class GeneratorsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
     }
 
     /**

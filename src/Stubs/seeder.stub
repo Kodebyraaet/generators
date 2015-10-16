@@ -5,7 +5,6 @@ use Illuminate\Database\Seeder;
 
 class {model}TableSeeder extends Seeder
 {
-
     public function __construct()
     {
         $this->model = \App::make({model}Interface::class);

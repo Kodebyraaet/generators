@@ -1,7 +1,8 @@
-<?php namespace {class_namespace};
+<?php
+
+namespace {class_namespace};
 
 use Illuminate\Support\ServiceProvider;
-
 use {app_namespace}\Entities\{model}\Models\{model};{extra_models_use_statements}
 use {app_namespace}\Entities\{model}\Contracts\{model}Interface;
 use {app_namespace}\Entities\{model}\Repositories\{model}Repository;

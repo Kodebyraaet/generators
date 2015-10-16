@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators;
+<?php
+
+namespace Kodebyraaet\Generators;
 
 use Illuminate\Console\Command;
 use Kodebyraaet\Generators\Generators\BaseGenerator;

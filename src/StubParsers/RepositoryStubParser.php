@@ -1,8 +1,9 @@
-<?php namespace Kodebyraaet\Generators\StubParsers;
+<?php
+
+namespace Kodebyraaet\Generators\StubParsers;
 
 class RepositoryStubParser extends StubParser
 {
-
     /**
      * Returns the string that will be replaced by {extra_models} in the stub
      * 
@@ -70,5 +71,4 @@ class RepositoryStubParser extends StubParser
         }
         return $string;
     }
-
 }

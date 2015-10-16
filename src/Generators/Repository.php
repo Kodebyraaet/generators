@@ -1,4 +1,6 @@
-<?php namespace Kodebyraaet\Generators\Generators;
+<?php
+
+namespace Kodebyraaet\Generators\Generators;
 
 class Repository extends BaseGenerator
 {

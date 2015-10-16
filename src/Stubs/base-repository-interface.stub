@@ -1,4 +1,6 @@
-<?php namespace {class_namespace};
+<?php
+
+namespace {class_namespace};
 
 use Kodebyraaet\Pattern\BaseRepositoryInterface;
 

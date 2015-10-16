@@ -1,13 +1,13 @@
-<?php namespace {class_namespace};
+<?php
+
+namespace {class_namespace};
 
 use {app_namespace}\Entities\Repository;
-
 use {app_namespace}\Entities\{model}\Models\{model};{extra_models_use_statements}
 use {app_namespace}\Entities\{model}\Contracts\{model}Interface;
 
 class {model}Repository extends Repository implements {model}Interface
 {
-
     /**
      * Constructor
      * 
@@ -19,5 +19,4 @@ class {model}Repository extends Repository implements {model}Interface
 
         parent::__construct();
     }
-
 }
