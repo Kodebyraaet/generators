@@ -95,7 +95,10 @@ abstract class BaseGenerator
      * A function that will be ran after generating the original file
      * 
      */
-    public function afterGenerate() {}
+    public function afterGenerate()
+    {
+
+    }
 
     /**
      * The parser to use.

@@ -13,7 +13,7 @@ class GeneratorsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+
     }
 
     /**
