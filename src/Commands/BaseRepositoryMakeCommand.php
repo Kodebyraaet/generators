@@ -3,12 +3,12 @@
 namespace Kodebyraaet\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Kodebyraaet\Generators\GeneratorFactory;
 
 class BaseRepositoryMakeCommand extends Command
 {
-    use AppNamespaceDetectorTrait;
+    use DetectsApplicationNamespace;
 
     /**
      * The name and signature of the console command.
