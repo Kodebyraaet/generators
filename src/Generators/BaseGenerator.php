@@ -4,12 +4,12 @@ namespace Kodebyraaet\Generators\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Kodebyraaet\Generators\StubParsers\StubParser;
 
 abstract class BaseGenerator
 {
-    use AppNamespaceDetectorTrait;
+    use DetectsApplicationNamespace;
 
     /**
      * Filesystem instance.
@@ -133,7 +133,7 @@ abstract class BaseGenerator
      */
     protected function detectNamespace()
     {
-        if(! str_contains($this->directory(), app_path())) {
+        if (!str_contains($this->directory(), app_path())) {
             return null;
         }
 

@@ -2,11 +2,11 @@
 
 namespace Kodebyraaet\Generators\StubParsers;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Illuminate\Console\DetectsApplicationNamespace;
 
 abstract class StubParser
 {
-    use AppNamespaceDetectorTrait;
+    use DetectsApplicationNamespace;
 
     /**
      * Contains extra data sent from the command
