@@ -11,7 +11,7 @@ class RepositoryInterface extends BaseGenerator
      */
     public function directory()
     {
-        return app_path('Entities/'.$this->name.'/Contracts');
+    	return app('path').DIRECTORY_SEPARATOR.'Entities'.DIRECTORY_SEPARATOR.$this->name.DIRECTORY_SEPARATOR.'Contracts';
     }
 
     /**
@@ -35,12 +35,12 @@ class RepositoryInterface extends BaseGenerator
      */
     public function makeFolders()
     {
-        if (!$this->filesystem->isDirectory(app_path('Entities'))) {
-            $this->filesystem->makeDirectory(app_path('Entities'));
+        if (!$this->filesystem->isDirectory(app('path').DIRECTORY_SEPARATOR.'Entities')) {
+            $this->filesystem->makeDirectory(app('path').DIRECTORY_SEPARATOR.'Entities');
         }
 
-        if (!$this->filesystem->isDirectory(app_path('Entities/'.$this->name))) {
-            $this->filesystem->makeDirectory(app_path('Entities/'.$this->name));
+        if (!$this->filesystem->isDirectory(app('path').DIRECTORY_SEPARATOR.'Entities'.DIRECTORY_SEPARATOR.$this->name)) {
+            $this->filesystem->makeDirectory(app('path').DIRECTORY_SEPARATOR.'Entities'.DIRECTORY_SEPARATOR.$this->name);
         }
 
         if (!$this->filesystem->isDirectory($this->directory())) {

@@ -133,11 +133,11 @@ abstract class BaseGenerator
      */
     protected function detectNamespace()
     {
-        if (!str_contains($this->directory(), app_path())) {
+        if (!str_contains($this->directory(), app('path'))) {
             return null;
         }
 
-        $path  = str_replace(app_path(), '', $this->directory());
+        $path  = str_replace(app('path'), '', $this->directory());
         $class = rtrim($this->getAppNamespace(), '\\') . str_replace('/', '\\', $path);
 
         return $class;

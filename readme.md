@@ -8,9 +8,13 @@ Install composer dependency.
 
     composer require kodebyraaet/generators --dev
 
-Add the provider in `config/app.php`.
+If you are using Laravel, add the provider in `config/app.php`.
 
     Kodebyraaet\Generators\GeneratorsServiceProvider::class
+
+If you are using Lumen, add the provider in `bootstrap/app.php`.
+
+    $app->register(Kodebyraaet\Generators\GeneratorsServiceProvider::class);
 
 ## Available Commands
 
