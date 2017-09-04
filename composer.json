@@ -22,5 +22,12 @@
             "Kodebyraaet\\Generators\\": "src"
         }
     },
-    "autoload-dev": {}
+    "autoload-dev": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kodebyraaet\\Generators\\GeneratorsServiceProvider"
+            ]
+        }
+    }
 }
